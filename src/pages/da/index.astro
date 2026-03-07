@@ -1,0 +1,13 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import da from '../../locales/da.json';
+const lang = 'da';
+import LanguageSwitcher from '@components/ui/LanguageSwitcher.astro';
+
+const currentLang = 'da';
+const currentPath = Astro.url.pathname;
+---
+<MainLayout>
+  <LanguageSwitcher {currentLang} {currentPath} />
+  <h1>{da.heroTitle}</h1>
+</MainLayout>

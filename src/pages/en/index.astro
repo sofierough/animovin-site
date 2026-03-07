@@ -1,0 +1,14 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import en from '../../locales/en.json';
+const lang = 'en';
+const heroText = 'Importing small European wine producers';
+import LanguageSwitcher from '@components/ui/LanguageSwitcher.astro';
+
+const currentLang = 'en';
+const currentPath = Astro.url.pathname;
+---
+<MainLayout>
+  <LanguageSwitcher {currentLang} {currentPath} />
+  <h1>{en.heroTitle}</h1>
+</MainLayout>

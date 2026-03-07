@@ -1,0 +1,21 @@
+---
+// Determine alternate language for switcher
+
+const { currentLang, currentPath } = Astro.props;
+
+// Determine the alternate language
+const altLang = currentLang === 'en' ? 'da' : 'en';
+
+// Remove the language prefix from currentPath
+// Example: '/en/producers' → 'producers'
+let pathWithoutLang = currentPath.replace(/^\/(en|da)/, '');
+
+// Construct alternate path
+// If pathWithoutLang is empty, set '/' (homepage)
+const altPath = `/${altLang}${pathWithoutLang || '/'}`;
+---
+
+<nav class="language-switcher">
+  <a href={`/en${pathWithoutLang || '/'}`} class={currentLang === 'en' ? 'active' : ''}>ENG</a> / 
+  <a href={`/da${pathWithoutLang || '/'}`} class={currentLang === 'da' ? 'active' : ''}>DA</a>
+</nav>
