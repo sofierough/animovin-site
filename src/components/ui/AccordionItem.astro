@@ -1,0 +1,128 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  address?: string;
+}
+
+const { title, subtitle, address } = Astro.props;
+---
+
+<div class="accordion-item">
+  <button class="accordion-trigger">
+
+    <div class="accordion-header">
+      <div class="accordion-text">
+        <h3 class="accordion-title">{title}</h3>
+
+        {subtitle && (
+          <p class="accordion-subtitle font-display">{subtitle}</p>
+        )}
+        {address && (
+          <p class="accordion-subtitle font-display">{address}</p>
+        )}
+
+      </div>
+
+      <span class="accordion-icon"></span>
+    </div>
+
+  </button>
+
+  <div class="accordion-content">
+    <div class="accordion-inner">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  cursor: pointer;
+  text-align: left;
+  color: #2c2c2c;
+  transition: color 0.2s;
+}
+
+.accordion-trigger:hover {
+  color: #494925;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-title {
+  font-weight: 600;
+}
+
+.accordion-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.accordion-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.accordion-inner {
+  padding-bottom: 1rem;
+}
+
+/* + icon */
+
+.accordion-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+  content: "";
+  position: absolute;
+  background: black;
+  transition: transform 0.25s ease;
+}
+
+.accordion-icon::before {
+  width: 18px;
+  height: 2px;
+  top: 8px;
+  left: 0;
+}
+
+.accordion-icon::after {
+  width: 2px;
+  height: 18px;
+  top: 0;
+  left: 8px;
+}
+
+/* Rotate the vertical line out of view when open */
+.accordion-item.open .accordion-icon::after {
+  transform: rotate(90deg) scaleX(0); /* effectively hides vertical bar */
+}
+
+/* Optional: rotate the horizontal bar slightly for style */
+.accordion-item.open .accordion-icon::before {
+  transform: rotate(0deg);
+}
+</style>

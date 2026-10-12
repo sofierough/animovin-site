@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Syne', sans-serif;
+
+  --color-accent: #F1BD45;
+
+  --color-background-main: #F0EBE5;
+  --color-background-footer: #3C251B;
+
+  --color-text-primary: #2c2c2c;
+  --color-text-secondary: #262626;
+  --color-text-heading: #494925;
+
+  --color-border-light: rgba(73, 73, 37, 0.2);
+
+  /* Spacing */
+  --spacing-section-mobile: 3rem;
+  --spacing-section-desktop: 6rem;
+  --spacing-hero-gap: 4rem;
+  --spacing-button-gap: 2rem;
+  --spacing-partner-py: 2rem;
+  --spacing-partner-gap: 0.5rem;
+
+  /* Hero */
+  --text-hero-headline: 56px;
+  --text-hero-headline-md: 68px;
+  --leading-hero-headline: 1.1;
+  --font-weight-hero-headline: 800;
+
+  --text-hero-body: 18px;
+  --text-hero-body-md: 20px;
+  --leading-hero-body: 28px;
+  --font-weight-hero-body: 400;
+
+  --text-hero-button: 20px;
+  --font-weight-hero-button: 400;
+
+  /* Partners */
+  --text-partner-name: 18px;
+  --font-weight-partner-name: 700;
+
+  --text-partner-info: 15px;
+  --font-weight-partner-info: 500;
+
+  --opacity-partner-description: 0.8;
+
+}
+
+/* Base */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background-main);
+  color: var(--color-text-primary);
+}
+
+h1, h3{
+  font-family: var(--font-display);
+}
+
+h2 {
+  font-family: var(--font-body);
+}
+
+/* Hero */
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-hero-headline);
+  font-weight: var(--font-weight-hero-headline);
+  line-height: var(--leading-hero-headline);
+  @media (width >= theme(--breakpoint-md)) { font-size: var(--text-hero-headline-md); }
+}
+
+.hero-headline-accent {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.hero-body {
+  font-family: var(--font-body);
+  font-size: var(--text-hero-body);
+  font-weight: var(--font-weight-hero-body);
+  line-height: var(--leading-hero-body);
+  @media (width >= theme(--breakpoint-md)) { font-size: var(--text-hero-body-md); }
+}
+
+.hero-button {
+  font-family: var(--font-display);
+  font-size: var(--text-hero-button);
+  font-weight: var(--font-weight-hero-button);
+  font-style: italic;
+  text-decoration: underline;
+}
+
+/* Partners */
+.partner-name {
+  font-family: var(--font-display);
+  font-size: var(--text-partner-name);
+  font-weight: var(--font-weight-partner-name);
+}
+
+.partner-info {
+  font-family: var(--font-display);
+  font-size: var(--text-partner-info);
+  font-weight: var(--font-weight-partner-info);
+  font-style: italic;
+}
+
+.partner-description {
+  font-family: var(--font-body);
+  opacity: var(--opacity-partner-description);
+}

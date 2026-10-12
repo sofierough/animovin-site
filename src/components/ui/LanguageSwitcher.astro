@@ -16,6 +16,27 @@ const altPath = `/${altLang}${pathWithoutLang || '/'}`;
 ---
 
 <nav class="language-switcher">
-  <a href={`/en${pathWithoutLang || '/'}`} class={currentLang === 'en' ? 'active' : ''}>ENG</a> / 
-  <a href={`/da${pathWithoutLang || '/'}`} class={currentLang === 'da' ? 'active' : ''}>DA</a>
+  <a href={`/da${pathWithoutLang || '/'}`} class={currentLang === 'da' ? 'active' : ''}>DA</a> / 
+  <a href={`/en${pathWithoutLang || '/'}`} class={currentLang === 'en' ? 'active' : ''}>ENG</a> 
 </nav>
+
+<style>
+  .language-switcher a {
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .language-switcher a:not(.active) {
+    color: oklch(55.1% .027 264.364);
+  }
+
+  .language-switcher a:not(.active):hover {
+    color: black;
+  }
+
+  .language-switcher .active {
+    font-weight: 700;
+    color: black;
+    border-bottom: 1px solid black;
+  }
+</style>

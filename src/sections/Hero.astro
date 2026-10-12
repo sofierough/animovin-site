@@ -1,0 +1,39 @@
+---
+const { lang = 'da' } = Astro.props;
+---
+
+<section id="hero" class="relative flex flex-col min-h-screen justify-start pt-56 md:justify-center md:pt-0 md:pl-32 mx:mt-40 max-w-7xl mx-auto px-6 overflow-hidden">
+<div class="relative z-10 max-w-2xl">
+    <h1 class="font-display hero-headline">Carefully <span class="hero-headline-accent">handpicked</span> wine</h1>
+    <div class="hero-body mt-10 md:mt-16">
+      {lang === 'da' ? (
+        <>
+          <p>Vi finder eksklusive vine formet af mennesker, steder og tålmodighed.</p>
+          <p>Flasker med identitet, dybde og en umiskendelig følelse af oprindelse.</p>
+        </>
+      ) : (
+        <>
+          <p>We source exclusive wines shaped by people, places and patience.</p>
+          <p>Bottles with identity, depth and an unmistakable sense of origin.</p>
+        </>
+      )}
+    </div>
+    <div class="mt-10 md:mt-16 flex gap-8">
+      <button class="hero-button min-h-[44px] min-w-[44px] px-2 transition-colors hover:text-text-heading" data-scroll-to="partners">
+        {lang === 'da' ? 'Mød producenterne' : 'Meet the producers'}
+      </button>
+      <button class="hero-button min-h-[44px] min-w-[44px] px-2 transition-colors hover:text-text-heading" data-scroll-to="contact">
+        {lang === 'da' ? 'Kontakt' : 'Contact'}
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-scroll-to');
+      document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

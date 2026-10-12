@@ -1,0 +1,67 @@
+<div class="accordion-group">
+  <slot />
+</div>
+
+<script>
+const groups = document.querySelectorAll(".accordion-group");
+
+groups.forEach(group => {
+  const items = group.querySelectorAll(".accordion-item");
+
+  items.forEach(item => {
+    const trigger = item.querySelector(".accordion-trigger");
+    const content = item.querySelector(".accordion-content");
+
+    trigger.addEventListener("click", () => {
+      const openItem = group.querySelector(".accordion-item.open");
+
+      if (openItem && openItem !== item) {
+        closeAccordion(openItem);
+      }
+
+      item.classList.contains("open")
+        ? closeAccordion(item)
+        : openAccordion(item);
+    });
+
+    function openAccordion(el) {
+      const content = el.querySelector(".accordion-content");
+
+      el.classList.add("open");
+
+      content.style.height = "0px";
+      const height = content.scrollHeight;
+
+      requestAnimationFrame(() => {
+        content.style.height = height + "px";
+      });
+
+      content.addEventListener(
+        "transitionend",
+        () => {
+          content.style.height = "auto";
+        },
+        { once: true }
+      );
+    }
+
+    function closeAccordion(el) {
+      const content = el.querySelector(".accordion-content");
+
+      content.style.height = content.scrollHeight + "px";
+
+      requestAnimationFrame(() => {
+        content.style.height = "0px";
+      });
+
+      el.classList.remove("open");
+    }
+  });
+});
+</script>
+
+<style>
+.accordion-group {
+  border-top: 1px solid #ddd;
+}
+</style>

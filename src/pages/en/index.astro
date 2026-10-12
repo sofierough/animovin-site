@@ -1,14 +1,19 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import en from '../../locales/en.json';
-const lang = 'en';
-const heroText = 'Importing small European wine producers';
-import LanguageSwitcher from '@components/ui/LanguageSwitcher.astro';
+import Navbar from '@components/ui/Navbar.astro';
+import Hero from '@sections/Hero.astro';
+import Producers from '@sections/Producers.astro';
+import Contact from '@sections/Contact.astro';
+import Footer from '@sections/Footer.astro';
 
 const currentLang = 'en';
 const currentPath = Astro.url.pathname;
 ---
-<MainLayout>
-  <LanguageSwitcher {currentLang} {currentPath} />
-  <h1>{en.heroTitle}</h1>
+
+<MainLayout title="Animovin">
+  <Navbar {currentLang} {currentPath} />
+  <Hero lang={currentLang} />
+  <Producers lang={currentLang} />
+  <Contact lang={currentLang} />
+  <Footer lang={currentLang} />
 </MainLayout>
